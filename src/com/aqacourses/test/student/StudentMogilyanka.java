@@ -22,7 +22,7 @@ public class StudentMogilyanka extends Student implements WriteToDbInterface {
     public void writeToDb(List<String> data) {
         try {
             openConnection();
-            if (validateData(data)) {
+            if (validateInputData(data)) {
                 for (String datum : data) {
                     bufferedWriter.write(getDate() + " - " + datum);
                     bufferedWriter.newLine();

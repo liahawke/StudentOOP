@@ -33,9 +33,8 @@ public abstract class AbstractStudent {
         System.out.println("Please enter sex of student:");
         String sex = scanner.nextLine();
         if (isLineNotEmpty(sex)) {
-            data.add(sex);
+            data.add(sex.toLowerCase());
         }
-
         return data;
     }
 
@@ -78,22 +77,21 @@ public abstract class AbstractStudent {
      */
 
     public boolean validateInputData (List<String> data){
-        String name = data.get(0).toString();
-        int age = Integer.parseInt(data.get(1).toString());
-        String sex = data.get(2).toString();
-        if(data.get(1).toString().matches("[a-zA-Z]+")){
-            System.out.println("Age should be a number!");
-            return false;
-        }
+        String name = data.get(0);
+        int age = Integer.parseInt(data.get(1));
+        String sex = data.get(2);
         if(!name.matches("[a-zA-Z]{2,10}\\s[a-zA-Z]{2,10}")){
             System.out.println("Your name or surname isn't correct!");
+            return false;
+        }if(data.get(1).matches("[a-zA-Z]+")){
+            System.out.println("Age should be a number!");
             return false;
         }
         if(age < 17 | age > 25){
             System.out.println("Age shouldn't be more than 25 or less than 17!");
             return false;
         }
-        if(!sex.equals("male") & !sex.equals("female")){
+        if(!sex.toLowerCase().equals("male") & !sex.toLowerCase().equals("female")){
             System.out.println("Sex should be male or female!");
             return false;
         }

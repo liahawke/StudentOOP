@@ -11,4 +11,6 @@ public interface WriteToDbInterface {
      */
     void writeToDb(List<String> data);
 
+
+
 }
